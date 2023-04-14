@@ -14,10 +14,18 @@ const alunos=
 ]
  
   function alunoNome(nome){
-    const alunosGeral= JSON.parse( fs.readFileSync("../db.json"))
+    let alunosGeral= JSON.parse( fs.readFileSync("../db.json"))
 
     const alunoFiltro=alunosGeral.filter( alunosGeral=>alunosGeral.nome===nome)
 return alunoFiltro  
 }
 
-  module.exports={alunoNome}
+function alunoMedia(media){
+    let alunosGeral= JSON.parse( fs.readFileSync("../db.json"))
+
+    const mediaFiltro=alunosGeral.filter( alunosGeral=>alunosGeral.media===media)
+return mediaFiltro  
+}
+
+
+  module.exports={alunoNome,alunoMedia}
