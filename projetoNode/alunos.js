@@ -1,4 +1,7 @@
-const alunosLista=
+const fs=require("fs");
+
+
+const alunos=
 [
     {nome:"Maria", matricula:"123", media:"10"},
     {nome:"Jose", matricula:"143", media:"9"},
@@ -9,3 +12,12 @@ const alunosLista=
     {nome:"Juliana", matricula:"133", media:"4"},
 
 ]
+ 
+  function alunoNome(nome){
+    const alunosGeral= JSON.parse( fs.readFileSync("../db.json"))
+
+    const alunoFiltro=alunosGeral.filter( alunosGeral=>alunosGeral.nome===nome)
+return alunoFiltro  
+}
+
+  module.exports={alunoNome}
