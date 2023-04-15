@@ -2,8 +2,9 @@ const express = require("express");
 const fs = require("fs");
 const { alunoNome } = require("./alunos");
 const { alunoMedia } = require("./alunos");
-
+const {insereAluno} = require("./alunos");
 const app = express();
+app.use(express.json());
 const porta = 3000;
 
 //ROTA FILTRAR ALUNO
@@ -22,14 +23,24 @@ app.get("/alunos", (req, res) => {
 });
 
 //ROTA INCLUIR
-app.post("/alunos/novo", (req, res) => {
-  let listaAtualizada = fs.writeFileSync(
-    "../db.json",
-    JSON.stringify([...listaAlunos, atualizarLista])
-  );
+app.post("/alunos", (req, res) => {
 
-  res.send(listaAtualizada);
+  const  { nome, matricula, media } = req.body;
+  insereAluno({ nome, matricula, media });
+  if(!nome|| !matricula|| !media){
+    res.status(400).json({ error: "Favor inserir NOME,MATRICULA e  MÉDIA " });
+  }else 
+  res.send("atualizado");
 });
+
+
+
+
+
+
+
+
+
 
 app.listen(porta, () => {
   console.log(`escutando a porta ${porta}`);

@@ -27,5 +27,14 @@ function alunoMedia(media){
 return mediaFiltro  
 }
 
+function insereAluno(alunoNovo){
+  let alunosGeral= JSON.parse( fs.readFileSync("../db.json"))
+let novaListaAlunos=[...alunosGeral,alunoNovo]
+fs.writeFileSync("../db.json",JSON.stringify(novaListaAlunos))
+}
 
-  module.exports={alunoNome,alunoMedia}
+  
+
+
+
+  module.exports={alunoNome,alunoMedia, insereAluno}
