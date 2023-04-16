@@ -1,0 +1,56 @@
+
+Request: GET /alunos at Sun Apr 16 2023 00:15:35 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.32.2
+Response Body:
+[
+	{
+		"nome": "Jose",
+		"matricula": "143",
+		"media": "9"
+	},
+	{
+		"nome": "Carolina",
+		"matricula": "193",
+		"media": "7"
+	},
+	{
+		"nome": "Giovanna",
+		"matricula": "113",
+		"media": "6"
+	},
+	{
+		"nome": "Fernando",
+		"matricula": "103",
+		"media": "5"
+	},
+	{
+		"nome": "Juliana",
+		"matricula": "133",
+		"media": "4"
+	},
+	{
+		"nome": "Carol",
+		"matricula": "29",
+		"media": "29"
+	},
+	{
+		"nome": "Carol",
+		"matricula": "29"
+	},
+	{
+		"nome": "Maria",
+		"matricula": "194444443",
+		"media": "1044444444444"
+	}
+]
+Response: 200 4.182 ms 
+
+Request: GET /alunos?nome=Giovanna at Sun Apr 16 2023 00:15:52 GMT-0300, IP: ::1, User Agent: PostmanRuntime/7.32.2
+Response Body:
+[
+	{
+		"nome": "Giovanna",
+		"matricula": "113",
+		"media": "6"
+	}
+]
+Response: 200 1.916 ms 

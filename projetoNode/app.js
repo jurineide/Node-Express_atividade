@@ -1,9 +1,22 @@
 const express = require("express");
 const fs = require("fs");
 const { alunoNome , deleteAluno, editarAluno, alunoMedia, insereAluno} = require("./alunos");
+const bodyParser=require('body-parser');
+const morganBody=require('morgan-body');
+const path=require('path');
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
+const log=fs.createWriteStream(
+  path.join(__dirname,"./logs","express.log"),{flags:"a"});
+
+
+morganBody(app,{
+  noColors:true,
+  stream:log
+});
+
 const porta = 3000;
 
 //ROTA FILTRAR ALUNO
