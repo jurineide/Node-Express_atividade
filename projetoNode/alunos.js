@@ -33,8 +33,13 @@ let novaListaAlunos=[...alunosGeral,alunoNovo]
 fs.writeFileSync("../db.json",JSON.stringify(novaListaAlunos))
 }
 
+function deleteAluno(nome) {
+  const alunosGeral= JSON.parse(fs.readFileSync("../db.json"))
+  const alunoFiltro=alunosGeral.filter(alunosGeral=>alunosGeral.nome !== nome)
+  fs.writeFileSync("../db.json",JSON.stringify(alunoFiltro))
   
+}
 
 
 
-  module.exports={alunoNome,alunoMedia, insereAluno}
+  module.exports={alunoNome,alunoMedia, insereAluno, deleteAluno}

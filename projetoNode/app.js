@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const { alunoNome } = require("./alunos");
+const { alunoNome , deleteAluno} = require("./alunos");
 const { alunoMedia } = require("./alunos");
 const {insereAluno} = require("./alunos");
 const app = express();
@@ -33,7 +33,14 @@ app.post("/alunos", (req, res) => {
   res.send("atualizado");
 });
 
-
+//Rota Deletar
+app.delete("/alunos/:nome", (req, res) =>{ 
+  const nome=req.params.nome
+  deleteAluno(nome)
+  res.send("aluni deletado")
+    
+    
+  });
 
 
 
