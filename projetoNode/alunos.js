@@ -40,6 +40,15 @@ function deleteAluno(nome) {
   
 }
 
+function editarAluno(editar, nome ){
+  let alunosAtuais= JSON.parse(fs.readFileSync("../db.json"))
+  const indiceModificado=alunosAtuais.findIndex(alunosAtuais=>alunosAtuais.nome===nome)
+  const conteudoMudado={...alunosAtuais[indiceModificado],...editar}
+  alunosAtuais[indiceModificado]=conteudoMudado
+  fs.writeFileSync("../db.json",JSON.stringify(alunosAtuais))
 
 
-  module.exports={alunoNome,alunoMedia, insereAluno, deleteAluno}
+}
+
+
+  module.exports={alunoNome,alunoMedia, insereAluno, deleteAluno, editarAluno}

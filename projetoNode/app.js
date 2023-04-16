@@ -1,8 +1,7 @@
 const express = require("express");
 const fs = require("fs");
-const { alunoNome , deleteAluno} = require("./alunos");
-const { alunoMedia } = require("./alunos");
-const {insereAluno} = require("./alunos");
+const { alunoNome , deleteAluno, editarAluno, alunoMedia, insereAluno} = require("./alunos");
+
 const app = express();
 app.use(express.json());
 const porta = 3000;
@@ -33,20 +32,22 @@ app.post("/alunos", (req, res) => {
   res.send("atualizado");
 });
 
-//Rota Deletar
-app.delete("/alunos/:nome", (req, res) =>{ 
+//ROTA DELETAR
+app.delete("/alunos/:nome", (req, res) =>{  
+  const nome=req.params.nome     
+    deleteAluno(nome)
+    res.send("aluno deletado");      
+  }
+  );
+
+//ROTA EDITAR
+app.put("/alunos/:nome", (req, res) =>{ 
   const nome=req.params.nome
-  deleteAluno(nome)
-  res.send("aluni deletado")
-    
-    
+  const body=req.body
+
+  editarAluno(body, nome);
+  res.send("Aluno modificado");    
   });
-
-
-
-
-
-
 
 
 app.listen(porta, () => {
